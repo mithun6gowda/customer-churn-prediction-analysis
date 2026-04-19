@@ -1,37 +1,51 @@
-import streamlit as st
+from flask import Flask, render_template, request
+import pickle
 import json
 import numpy as np
-import pickle
 import os
 
-# Paths
+app = Flask(__name__)
+
+# Load model
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 model_path = os.path.join(BASE_DIR, "model", "churn_prediction.pkl")
 columns_path = os.path.join(BASE_DIR, "model", "columns.json")
 
-# Load
 with open(model_path, "rb") as f:
     model = pickle.load(f)
 
 with open(columns_path, "r") as f:
-    data_columns = json.load(f)['data_columns']
+    data_columns = json.load(f)["data_columns"]
 
-st.title("📊 Customer Churn Prediction App")
 
-st.write("Enter feature values:")
+@app.route("/", methods=["GET", "POST"])
+def index_page():
+    if request.method == "POST":
+        input_data = {}
 
-input_data = {}
+        for col in data_columns:
+            val = request.form.get(col)
 
-for col in data_columns:
-    input_data[col] = st.number_input(f"{col}", value=0.0)
+            # Convert to float safely
+            try:
+                input_data[col] = float(val)
+            except:
+                input_data[col] = 0
 
-# Correct ordering
-input_array = np.array([[input_data[col] for col in data_columns]])
+        # Maintain correct order
+        input_array = np.array([[input_data[col] for col in data_columns]])
 
-if st.button("Predict"):
-    prediction = model.predict(input_array)
+        prediction = model.predict(input_array)[0]
 
-    if prediction[0] == 1:
-        st.error("⚠️ Customer is likely to churn")
-    else:
-        st.success("✅ Customer will stay")
+        result = "Churn" if prediction == 1 else "Not Churn"
+
+        return render_template("result.html", data={
+            "prediction": result
+        })
+
+    return render_template("index.html")
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
