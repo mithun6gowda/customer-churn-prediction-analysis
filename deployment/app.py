@@ -4,18 +4,25 @@ import numpy as np
 import pickle
 
 # Load model
-with open("churn_prediction.pkl", "rb") as f:
+import os
+import json
+import pickle
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+model_path = os.path.join(BASE_DIR, "..", "churn_prediction.pkl")
+columns_path = os.path.join(BASE_DIR, "..", "columns.json")
+
+with open(model_path, "rb") as f:
     model = pickle.load(f)
 
-# Load columns
-with open("columns.json", "r") as f:
+with open(columns_path, "r") as f:
     data_columns = json.load(f)['data_columns']
 
 st.title("My ML Model App")
 
 st.write("Enter feature values:")
 
-# Collect inputs dynamically
 input_data = {}
 
 for col in data_columns:
