@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #f0f8ff;
+        }
+        .prediction-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .churn {
+            color: red;
+        }
+        .not-churn {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="prediction-container">
+
+        <h1>Prediction Result</h1>
+
+        <p>Model predicted:</p>
+
+        <h2 class="{% if data['prediction']=='Churn' %}churn{% else %}not-churn{% endif %}">
+            {{ data['prediction'] }}
+        </h2>
+
+        {% if data['predict_probability'] %}
+        <p>
+            Probability: {{ data['predict_probability'] }}
+        </p>
+        {% endif %}
+
+        <br>
+        <a href="/" class="btn btn-primary">Go Back</a>
+
+    </div>
+</div>
+
+</body>
+</html>

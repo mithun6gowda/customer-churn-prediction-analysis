@@ -1,125 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <style>
-        body {
-            background-color: #ddefff; /* Light blue background color */
-        }
-    </style>
-    <title>Churn | Customer Churn Prediction</title>
+    <meta charset="UTF-8">
+    <title>Customer Churn Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
-<body>
-    <div class="container">
-        <div class="py-5 text-center">
-            <img class="d-block mx-auto mb-4" src="/end_to_end_deployment/static/img/churn.jpg" alt="" style="width: 150px; height: auto;">
-            <h2>Customer Churn Prediction</h2>
-            <p class="lead">Fill the values below to predict Customer Churn</p>
-        </div>
+
+<body style="background-color:#ddefff;">
+
+<div class="container mt-5">
+    <h2 class="text-center">Customer Churn Prediction</h2>
+    <form action="{{ url_for('index') }}" method="post">
+
         <div class="row">
-            <div class="col-md-2"></div>
-            <div class="col-md-12">
-                <h4 class="mb-3">Customer Details</h4>
-                <form action="{{ url_for('index_page')}}" method="post" class="needs-validation">
-                    <div class="row">
-                        <div class="col-md-3 mb-3">
-                            <label for="Tenure">Tenure</label>
-                            <input type="text" class="form-control" id="Tenure" name="Tenure" placeholder="" value="" required>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="Citytier">City Tier</label>
-                            <input type="text" class="form-control" id="Citytier" name="Citytier" placeholder="" value="" required>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="Warehousetohome">Warehouse To Home</label>
-                            <input type="text" class="form-control" id="Warehousetohome" name="Warehousetohome" placeholder="" value="" required>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="Gender">Gender</label>
-                            <select id="Gender" name="Gender" class="form-control" required>
-                                <option value="" selected></option>
-                                <option value="female">Female</option>
-                                <option value="male">Male</option>
-                            </select>
-                        </div>
-                    </div>
 
-                    <div class="row">    
-                        <div class="col-md-3 mb-3">
-                            <label for="Hourspendonapp">Hour Spend On App</label>
-                            <input type="text" class="form-control" id="Hourspendonapp" name="Hourspendonapp" placeholder="" value="" required>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="Numberofdeviceregistered">Number Of Device Registered</label>
-                            <input type="text" class="form-control" id="Numberofdeviceregistered" name="Numberofdeviceregistered" placeholder="" value="" required>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="Satisfactionscore">Satisfaction Score</label>
-                            <input type="text" class="form-control" id="Satisfactionscore" name="Satisfactionscore" placeholder="" value="" required>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="Maritalstatus">Marital Status</label>
-                            <select id="Maritalstatus" name="Maritalstatus" class="form-control" required>
-                                <option value="" selected></option>
-                                <option value="divorced">Divorced</option>
-                                <option value="married">Married</option>
-                                <option value="single">Single</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-3 mb-3">
-                            <label for="Numberofaddress">Number Of Address</label>
-                            <input type="text" class="form-control" id="Numberofaddress" name="Numberofaddress" placeholder="" value="" required>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="Complain">Complain</label>
-                            <input type="text" class="form-control" id="Complain" name="Complain" placeholder="" value="" required>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="Orderamounthikefromlastyear">Order Amount Hike From Last Year</label>
-                            <input type="text" class="form-control" id="Orderamounthikefromlastyear" name="Orderamounthikefromlastyear" placeholder="" value="" required>
-                        </div>
-                        <div class="col-md-3 mb-3">
-                            <label for="Couponused">Coupon Used</label>
-                            <input type="text" class="form-control" id="Couponused" name="Couponused" placeholder="" value="" required>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <label for="Ordercount">Order Count</label>
-                            <input type="text" class="form-control" id="Ordercount" name="Ordercount" placeholder="" value="" required>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="Daysincelastorder">Day(s) Since Last Order</label>
-                            <input type="text" class="form-control" id="Daysincelastorder" name="Daysincelastorder" placeholder="" value="" required>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="Cashbackamount">Cashback Amount</label>
-                            <input type="text" class="form-control" id="Cashbackamount" name="Cashbackamount" placeholder="" value="" required>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">Predict</button>
-                </form>
+            <div class="col-md-3">
+                <label>Tenure</label>
+                <input type="text" name="tenure" class="form-control" required>
             </div>
-            <div class="col-md-2"></div>
-        </div>
-        <footer class="my-5 pt-5 text-muted text-center text-small">
-            <p class="mb-1">&copy; 2024 - Allan Ouko</p>
 
-        </footer>
-    </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+            <div class="col-md-3">
+                <label>City Tier</label>
+                <input type="text" name="citytier" class="form-control" required>
+            </div>
+
+            <div class="col-md-3">
+                <label>Warehouse to Home</label>
+                <input type="text" name="warehousetohome" class="form-control" required>
+            </div>
+
+            <div class="col-md-3">
+                <label>Gender</label>
+                <select name="gender" class="form-control">
+                    <option value="female">Female</option>
+                    <option value="male">Male</option>
+                </select>
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <label>Hours Spend on App</label>
+                <input type="text" name="hourspendonapp" class="form-control" required>
+            </div>
+
+            <div class="col-md-3">
+                <label>Devices Registered</label>
+                <input type="text" name="numberofdeviceregistered" class="form-control" required>
+            </div>
+
+            <div class="col-md-3">
+                <label>Satisfaction Score</label>
+                <input type="text" name="satisfactionscore" class="form-control" required>
+            </div>
+
+            <div class="col-md-3">
+                <label>Marital Status</label>
+                <select name="maritalstatus" class="form-control">
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                    <option value="divorced">Divorced</option>
+                </select>
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <label>Number of Address</label>
+                <input type="text" name="numberofaddress" class="form-control" required>
+            </div>
+
+            <div class="col-md-3">
+                <label>Complain</label>
+                <input type="text" name="complain" class="form-control" required>
+            </div>
+
+            <div class="col-md-3">
+                <label>Order Amount Hike</label>
+                <input type="text" name="orderamounthikefromlastyear" class="form-control" required>
+            </div>
+
+            <div class="col-md-3">
+                <label>Coupon Used</label>
+                <input type="text" name="couponused" class="form-control" required>
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <label>Order Count</label>
+                <input type="text" name="ordercount" class="form-control" required>
+            </div>
+
+            <div class="col-md-4">
+                <label>Days Since Last Order</label>
+                <input type="text" name="daysincelastorder" class="form-control" required>
+            </div>
+
+            <div class="col-md-4">
+                <label>Cashback Amount</label>
+                <input type="text" name="cashbackamount" class="form-control" required>
+            </div>
+
+        </div>
+
+        <br>
+
+        <button type="submit" class="btn btn-primary btn-block">Predict</button>
+
+    </form>
+</div>
+
 </body>
 </html>
