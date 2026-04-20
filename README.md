@@ -31,9 +31,10 @@ The data is in .xlsx format with the following features:
 | DaySinceLastOrder          | Days since last order                                                      |
 | CashbackAmount             | Average cashback received in the last month                                |
 
-
-
+Application Input User Interface
 
 ![alt text](image.png)
+
+Application Result User Interface
 
 ![alt text](image-1.png)
