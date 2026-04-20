@@ -33,8 +33,8 @@ The data is in .xlsx format with the following features:
 
 Application Input User Interface
 
-![alt text](image.png)
+![alt text](data/ui.png.png)
 
 Application Result User Interface
 
-![alt text](image-1.png)
+![alt text](data/result.png.png)
